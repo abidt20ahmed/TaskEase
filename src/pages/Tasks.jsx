@@ -12,7 +12,7 @@ const Tasks = () => {
                     <li className="font-semibold list-disc text-green-500">Completed</li>
                 </ul>
             </div>
-            <div className="w-1/3 mx-auto gap-5 mt-10">
+            <div className="lg:w-1/3 mx-auto gap-5 mt-10">
                 <TaskTrack state={'Pending'} tasks={5} />
             </div>
         </div>
