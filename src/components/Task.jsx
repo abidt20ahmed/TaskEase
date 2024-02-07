@@ -1,17 +1,19 @@
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { MdCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import Confirm from "./Confirm";
+import { useState } from "react";
 
-const Task = ({ task }) => {
-// const task = {
-//     id: 1,
-//     status: 'pending',
-//     title: 'My Task',
-//     description:
-//         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores exercitationem ipsam earum neque, soluta ea hic quam aliquid quo..',
-//     date: '2024-02-08',
-//     priority: 'high',
-// };
+const Task = ({ task, setTasks }) => {
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+    const handleConfirmDelete = (id) => {
+        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        const remainingTasks = tasks.filter(task => task.id !== id);
+        localStorage.setItem("tasks", JSON.stringify(remainingTasks));
+        setTasks(JSON.parse(localStorage.getItem('tasks')))
+        setIsConfirmOpen(false);
+    };
 
     return (
         <div className="bg-slate-200 rounded-md p-5 w-full">
@@ -37,9 +39,15 @@ const Task = ({ task }) => {
                     >
                         <FiEdit className="h-5 w-5 text-slate-500" />
                     </button>
-                    <button title="Delete">
+                    <button onClick={() => setIsConfirmOpen((prev) => !prev)} title="Delete">
                         <FiTrash className="h-5 w-5 text-red-500" />
                     </button>
+                    <Confirm
+                        isOpen={isConfirmOpen}
+                        message="Are you sure you want to delete?"
+                        onConfirm={() => handleConfirmDelete(task.id)}
+                        onCancel={() => setIsConfirmOpen((prev) => !prev)}
+                    />
                 </div>
             </div>
         </div>

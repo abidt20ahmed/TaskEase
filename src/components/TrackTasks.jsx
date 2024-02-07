@@ -5,14 +5,14 @@ import TaskModal from "./TaskModal";
 
 const TrackTasks = () => {
     const [task, setTask] = useState({
-        id: null,
+        id: Date.now().toString().substring(0, 10) + Math.random().toString(36).substring(2, 7),
         status: 'Pending',
         title: '',
         description: '',
         date: new Date().toLocaleDateString(),
         priority: 'Normal',
     });
-    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')));
+    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
     const [showModal, setShowModal] = useState(false);
 
 
@@ -20,7 +20,7 @@ const TrackTasks = () => {
         setShowModal(false); // Close the modal
     };
     return (
-        <div className="relative h-[800px] overflow-auto">
+        <div className="relative">
             <div className="flex justify-between  bg-blue-100 p-5 rounded-md mb-3">
                 <div className="flex justify-center items-center gap-2 sm:gap-5">
                     <button className="border-2 border-slate-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
@@ -47,7 +47,7 @@ const TrackTasks = () => {
             <div className="space-y-3">
                 {/* Tasks here*/}
                 {tasks.map((t, i) => (
-                    <Task key={i} task={t} />
+                    <Task key={i} task={t} setTasks={setTasks} />
                 ))}
             </div>
         </div>

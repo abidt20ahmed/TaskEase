@@ -9,7 +9,7 @@ const TaskModal = ({ isOpen, task, tasks, setTask, onSave, onClose }) => {
         onClose()
         setTimeout(() => {
             setTask({
-                id: null,
+                id: Date.now().toString().substring(0, 10) + Math.random().toString(36).substring(2, 7),
                 status: 'Pending',
                 title: '',
                 description: '',
