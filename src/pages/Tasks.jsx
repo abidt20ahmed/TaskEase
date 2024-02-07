@@ -1,5 +1,4 @@
-import { FiPlus } from "react-icons/fi";
-import TaskTrack from "../components/TaskTrack";
+import TaskTrack from "../components/TrackTasks";
 
 const Tasks = () => {
     return (
@@ -8,22 +7,8 @@ const Tasks = () => {
                 <div>
                     <h1 className="font-bold text-3xl text-blue-500">TaskEase</h1>
                 </div>
-                {/* <div className="flex flex-col-reverse sm:flex-row justify-center items-center gap-5">
-                    <div className="flex justify-center items-center gap-2 sm:gap-5">
-                        <button className="border-2 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
-                            <p className="font-bold text-gray-600">5</p>
-                        </button>
-                        <button className="border-2 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
-                            <p className="font-bold text-gray-600">5</p>
-                        </button>
-                        <button className="border-2 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
-                            <p className="font-bold text-gray-600">5</p>
-                        </button>
-                    </div>
-                    <button className="btn flex justify-center items-center gap-2 max-w-28"> <FiPlus className="w-5 h-5" /> Add Task</button>
-                </div> */}
             </div>
-            <div className="flex justify-center gap-5 mt-10">
+            <div className="w-1/3 mx-auto gap-5 mt-10">
                 <TaskTrack state={'Pending'} tasks={5} />
             </div>
         </div>
