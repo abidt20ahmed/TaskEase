@@ -5,3 +5,11 @@
 .btn {
   @apply text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-md text-sm px-3 py-2.5 text-center;
 }
+
+.form_textarea {
+  @apply w-full flex rounded-lg min-h-20 mt-2 p-3 text-sm text-gray-500 outline-0  border border-slate-300;
+}
+
+.form_input {
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0  border border-slate-300;
+}

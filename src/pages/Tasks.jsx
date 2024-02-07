@@ -7,6 +7,10 @@ const Tasks = () => {
                 <div>
                     <h1 className="font-bold text-3xl text-blue-500">TaskEase</h1>
                 </div>
+                <ul className="flex gap-10">
+                    <li className="font-semibold list-disc text-amber-500">Pending </li>
+                    <li className="font-semibold list-disc text-green-500">Completed</li>
+                </ul>
             </div>
             <div className="w-1/3 mx-auto gap-5 mt-10">
                 <TaskTrack state={'Pending'} tasks={5} />

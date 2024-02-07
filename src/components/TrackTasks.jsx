@@ -15,22 +15,21 @@ const TrackTasks = () => {
     const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
     const [showModal, setShowModal] = useState(false);
 
+    const completed = tasks.filter(task => task.status === 'Completed').length
+    const pending = tasks.filter(task => task.status === 'Pending').length
 
-    const handleCloseModal = () => {
-        setShowModal(false); // Close the modal
-    };
     return (
         <div className="relative">
             <div className="flex justify-between  bg-blue-100 p-5 rounded-md mb-3">
                 <div className="flex justify-center items-center gap-2 sm:gap-5">
-                    <button className="border-2 border-slate-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
-                        <p className="font-bold text-gray-600">5</p>
+                    <button className="border-2 border-amber-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
+                        <p className="font-bold text-gray-600">{pending}</p>
                     </button>
-                    <button className="border-2 border-slate-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
-                        <p className="font-bold text-gray-600">5</p>
+                    <button className="border-2 border-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                        <p className="font-bold text-gray-600">{completed}</p>
                     </button>
-                    <button className="border-2 border-slate-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
-                        <p className="font-bold text-gray-600">5</p>
+                    <button className="border-2 border-b-amber-500 border-l-amber-500 border-t-green-500 border-r-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                        <p className="font-bold text-gray-600">{tasks.length}</p>
                     </button>
                 </div>
                 <button onClick={() => setShowModal((prev) => !prev)} className="btn flex justify-center items-center gap-2 max-w-28"> <FiPlus className="w-5 h-5" /> Add Task</button>
@@ -38,7 +37,7 @@ const TrackTasks = () => {
             <TaskModal
                 isOpen={showModal}
                 onSave={setTasks}
-                onClose={handleCloseModal}
+                onClose={() => setShowModal((prev) => !prev)}
                 tasks={tasks}
                 task={task}
                 setTask={setTask}
@@ -47,7 +46,7 @@ const TrackTasks = () => {
             <div className="space-y-3">
                 {/* Tasks here*/}
                 {tasks.map((t, i) => (
-                    <Task key={i} task={t} setTasks={setTasks} />
+                    <Task key={i} task={t} tasks={tasks} setTasks={setTasks} />
                 ))}
             </div>
         </div>
