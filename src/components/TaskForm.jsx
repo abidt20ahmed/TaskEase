@@ -49,7 +49,7 @@ const TaskForm = ({ title, isOpen, task, setTask, onClose, handleSubmit }) => {
                         </select>
                     </div>
                     <div className="flex justify-end">
-                        <button onClick={() => setTask && setTask({ ...task, priority: priority || task?.priority })} type="submit" className="px-4 py-2  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br text-white rounded-md mr-2">Save</button>
+                        <button onClick={() => setTask && setTask({ ...task, priority: priority || 'Low' })} type="submit" className="px-4 py-2  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br text-white rounded-md mr-2">Save</button>
                         <button type="button" onClick={() => {
                             onClose(), setTimeout(() => {
                                 setPriority(task.priority)
