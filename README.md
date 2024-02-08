@@ -1,5 +1,7 @@
 # TaskEase
 
+[taskease-web.netlify.app](https://taskease-web.netlify.app/)
+
 # TaskEase App Overview
 
 The Todo List App is a simple task management application built using React. It allows users to organize their tasks by adding, editing, and deleting them. Each task can have a status (completed or incomplete) and a priority (low, medium, or high), with each priority level represented by a different color. The application provides basic functionality to manage tasks efficiently and includes features such as task counters, status management, and priority filtering.
