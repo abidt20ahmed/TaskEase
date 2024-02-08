@@ -15,7 +15,7 @@ const TaskModal = ({ isOpen, task, tasks, setTask, onSave, onClose }) => {
                 title: '',
                 description: '',
                 date: new Date().toLocaleDateString(),
-                priority: 'Normal',
+                priority: 'Low',
             })
         }, 300);
     };
