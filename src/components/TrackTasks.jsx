@@ -10,7 +10,7 @@ const TrackTasks = () => {
         title: '',
         description: '',
         date: new Date().toLocaleDateString(),
-        priority: 'Low',
+        priority: '',
     });
     const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
     const [showModal, setShowModal] = useState(false);
