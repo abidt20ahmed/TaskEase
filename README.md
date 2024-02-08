@@ -1,6 +1,6 @@
 # TaskEase
 
-[taskease-web.netlify.app](https://taskease-web.netlify.app/)
+[task-ease.vercel.app](https://task-ease.vercel.app/)
 
 # TaskEase App Overview
 
