@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TaskForm = ({ title, isOpen, task, tasks, setTask, onSave, onClose, handleSubmit }) => {
+const TaskForm = ({ title, isOpen, task, setTask, onClose, handleSubmit }) => {
     const [priority, setPriority] = useState('')
     return (
         <div className={`fixed inset-0 z-10 flex justify-center items-center bg-gray-800 bg-opacity-50 transition-opacity duration-500 ${!isOpen && 'opacity-0 pointer-events-none'}`}>
