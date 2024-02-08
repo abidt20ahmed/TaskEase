@@ -1,6 +1,6 @@
 import TaskForm from "./TaskForm";
 
-const TaskModal = ({ title, isOpen, task, tasks, setTask, onSave, onClose }) => {
+const TaskModal = ({ isOpen, task, tasks, setTask, onSave, onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,6 +30,7 @@ const TaskModal = ({ title, isOpen, task, tasks, setTask, onSave, onClose }) => 
                 task={task}
                 setTask={setTask}
                 handleSubmit={handleSubmit}
+                onInputChange={(e) => setTask({ ...task, title: e.target.value })}
             />
 
             {/* <div className={`fixed inset-0 z-10 flex justify-center items-center bg-gray-800 bg-opacity-50 transition-opacity duration-500 ${!isOpen && 'opacity-0 pointer-events-none'}`}>

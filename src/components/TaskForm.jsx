@@ -13,7 +13,7 @@ const TaskForm = ({ title, isOpen, task, tasks, setTask, onSave, onClose, handle
                             id="title"
                             name="title"
                             value={task.title}
-                            onChange={(e) => setTask({ ...task, title: e.target.value })}
+                            onChange={(e) => setTask && setTask({ ...task, title: e.target.value })}
                             className="form_input"
                             required
                         />
@@ -24,7 +24,7 @@ const TaskForm = ({ title, isOpen, task, tasks, setTask, onSave, onClose, handle
                             id="description"
                             name="description"
                             value={task.description}
-                            onChange={(e) => setTask({ ...task, description: e.target.value })}
+                            onChange={(e) => setTask && setTask({ ...task, description: e.target.value })}
                             rows="4"
                             className="form_textarea resize-none"
                             required

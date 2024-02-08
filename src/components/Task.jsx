@@ -3,8 +3,11 @@ import { MdCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import Confirm from "./Confirm";
 import { useState } from "react";
+import EditTaskModal from "./EditTaskModal";
 
 const Task = ({ task, setTasks }) => {
+    const [showModal, setShowModal] = useState(false);
+    const [editableTask, setEditableTask] = useState(task);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const tasks = JSON.parse(localStorage.getItem('tasks'));
 
@@ -52,7 +55,11 @@ const Task = ({ task, setTasks }) => {
                             <MdOutlineCheckBoxOutlineBlank className="h-5 w-5 text-blue-500" />}
                     </button>
                     <button
-                        // onClick={() => setIsConfirmOpen((prev) => !prev)}
+                        onClick={() => {
+                            setEditableTask(tasks.find(t => t.id === task.id)),
+                                console.log(tasks.find(t => t.id === task.id)),
+                                setShowModal((prev) => !prev)
+                        }}
                         title="Edit"
                     >
                         <FiEdit className="h-5 w-5 text-slate-500" />
@@ -68,6 +75,14 @@ const Task = ({ task, setTasks }) => {
                     />
                 </div>
             </div>
+            <EditTaskModal
+                isOpen={showModal}
+                onSave={setTasks}
+                onClose={() => setShowModal((prev) => !prev)}
+                tasks={tasks}
+                task={editableTask}
+                setTask={setEditableTask}
+            />
         </div>
     );
 };
