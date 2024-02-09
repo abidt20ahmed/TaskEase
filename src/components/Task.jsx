@@ -1,12 +1,16 @@
 import { FiEdit, FiTrash } from "react-icons/fi";
-import { MdCheckBox } from "react-icons/md";
+import { MdCheckBox, MdDetails } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import { PiDotsThreeOutlineLight } from "react-icons/pi";
 import Confirm from "./Shared/Confirm";
 import { useState } from "react";
 import EditTaskModal from "./EditTaskModal";
+import DynamicModal from "./Shared/DynamicModal";
+import TaskDetails from "./TaskDetails";
 
 const Task = ({ task, setTasks }) => {
     const [showModal, setShowModal] = useState(false);
+    const [details, setDetails] = useState(false);
     const [editableTask, setEditableTask] = useState(task);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -57,6 +61,12 @@ const Task = ({ task, setTasks }) => {
                 <p>{task?.date}</p>
                 <div className="flex gap-3">
                     <button
+                        onClick={() => setDetails((prev) => !prev)}
+                        title="Details"
+                    >
+                        <PiDotsThreeOutlineLight className="h-5 w-5 text-slate-500" />
+                    </button>
+                    <button
                         onClick={() => {
                             setEditableTask(tasks.find(t => t.id === task?.id)),
                                 console.log(tasks.find(t => t.id === task?.id)),
@@ -85,6 +95,11 @@ const Task = ({ task, setTasks }) => {
                     />
                 </div>
             </div>
+
+            <DynamicModal isOpen={details} onClose={() => setDetails((prev) => !prev)}>
+                <TaskDetails task={task} />
+            </DynamicModal>
+
             <EditTaskModal
                 isOpen={showModal}
                 onSave={setTasks}

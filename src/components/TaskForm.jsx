@@ -6,7 +6,7 @@ const TaskForm = ({ title, isOpen, task, setTask, onClose, handleSubmit }) => {
 
     return (
 
-        <DynamicModal isOpen={isOpen}>
+        <DynamicModal isOpen={isOpen} onClose={() => onClose()}>
             <h2 className="text-xl font-bold mb-4">{title ? title : 'Add'} Task</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
