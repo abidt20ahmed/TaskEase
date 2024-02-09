@@ -33,16 +33,25 @@ const Task = ({ task, setTasks }) => {
         // Updating the tasks state with the modified array in order render the ui
         setTasks(updatedTasks);
     };
-    // task?.status === "Completed" && 'text-slate-500')
+
+    const priorityTitle = (task?.status === "Completed" && 'text-slate-500 font-extrabold') || (task?.priority === 'High' ? 'text-red-500' : task?.priority === 'Medium' ? 'text-yellow-500' : task?.priority === 'Low' ? 'text-green-500' : '')
+    const priorityCard = task?.priority === 'High' && 'bg-red-50 border-red-500';
+
     return (
-        <div className="bg-slate-200 rounded-md p-5 w-full">
-            <h1
-                className={`text-lg font-bold mb-3 flex items-center gap-2 ${(task?.status === "Completed" && 'text-slate-500 font-extrabold') || (task?.priority === 'High' ? 'text-red-500' :
-                    task?.priority === 'Medium' ? 'text-yellow-500' :
-                        task?.priority === 'Low' ? 'text-green-500' : '')}`}
-            >
-                {task?.title}<MdCheckBox className={`h-5 w-5 text-green-500 ${task?.status !== "Completed" && 'hidden'}`} />
-            </h1>
+        <div className={`border bg-slate-200 rounded-md p-5 w-full ${priorityCard}`}>
+            <div className="flex justify-between items-center">
+                <h1
+                    className={`text-lg font-bold mb-3 flex items-center gap-2 ${priorityTitle}`}
+                >
+                    {task?.title}<MdCheckBox className={`h-5 w-5 text-green-500 ${task?.status !== "Completed" && 'hidden'}`} />
+                </h1>
+                <h1
+                    className={`text-lg font-bold mb-3 flex items-center gap-2 text-green-500 ${task?.status !== "Completed" && 'hidden'}`}
+                >
+                    Completed
+                </h1>
+
+            </div>
             <p className="mb-3">{task?.description}</p>
             <div className="flex justify-between mt-3">
                 <p>{task?.date}</p>

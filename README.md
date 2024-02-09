@@ -8,7 +8,7 @@ The Todo List App is a simple task management application built using React. It 
 
 #Features
 
-* Display a list of tasks with their status (completed or incomplete).
+* Display a list of tasks with their status (completed or incomplete). [The amber color indicates the pending status and green color indicates completed status]
 * Allow users to mark tasks as completed or delete them.
 * Provide options to add new tasks and edit existing ones.
 * Implement task priority management (low, medium, high).
