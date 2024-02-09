@@ -1,7 +1,7 @@
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { MdCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
-import Confirm from "./Confirm";
+import Confirm from "./Shared/Confirm";
 import { useState } from "react";
 import EditTaskModal from "./EditTaskModal";
 
