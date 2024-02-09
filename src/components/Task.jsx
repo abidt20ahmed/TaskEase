@@ -35,7 +35,7 @@ const Task = ({ task, setTasks }) => {
     };
 
     const priorityTitle = (task?.status === "Completed" && 'text-slate-500 font-extrabold') || (task?.priority === 'High' ? 'text-red-500' : task?.priority === 'Medium' ? 'text-yellow-500' : task?.priority === 'Low' ? 'text-green-500' : '')
-    const priorityCard = task?.priority === 'High' && 'bg-red-50 border-red-500';
+    const priorityCard = (task?.status === "Completed" && 'null') || task?.priority === 'High' && 'bg-red-50 border-red-500';
 
     return (
         <div className={`border bg-slate-200 rounded-md p-5 w-full ${priorityCard}`}>

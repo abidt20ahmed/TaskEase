@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import Task from "./Task";
 import TaskModal from "./TaskModal";
+import { filterByStatus } from "../lib/filterByStatus";
 
 const TrackTasks = () => {
     const [task, setTask] = useState({
@@ -12,24 +13,25 @@ const TrackTasks = () => {
         date: new Date().toLocaleDateString(),
         priority: '',
     });
-    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+    const allTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const [tasks, setTasks] = useState(allTasks);
     const [showModal, setShowModal] = useState(false);
 
-    const completed = tasks?.filter(task => task.status === 'Completed')?.length
-    const pending = tasks?.filter(task => task.status === 'Pending')?.length
+    const completed = allTasks?.filter(task => task.status === 'Completed')?.length
+    const pending = allTasks?.filter(task => task.status === 'Pending')?.length
 
     return (
         <div className="relative pb-10">
             <div className="flex justify-between  bg-blue-100 p-5 rounded-md mb-3">
                 <div className="flex justify-center items-center gap-2 sm:gap-5">
-                    <button title="Pending Tasks" className="border-2 border-amber-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
+                    <button onClick={() => filterByStatus('Pending', setTasks)} title="Pending Tasks" className="border-2 border-amber-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
                         <p className="font-bold text-gray-600">{pending}</p>
                     </button>
-                    <button title="Completed Tasks" className="border-2 border-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                    <button onClick={() => filterByStatus('Completed', setTasks)} title="Completed Tasks" className="border-2 border-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
                         <p className="font-bold text-gray-600">{completed}</p>
                     </button>
-                    <button title="All Tasks" className="border-2 border-b-amber-500 border-l-amber-500 border-t-green-500 border-r-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
-                        <p className="font-bold text-gray-600">{tasks?.length}</p>
+                    <button onClick={() => filterByStatus('', setTasks)} title="All Tasks" className="border-2 border-b-amber-500 border-l-amber-500 border-t-green-500 border-r-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                        <p className="font-bold text-gray-600">{allTasks?.length}</p>
                     </button>
                 </div>
                 <button onClick={() => setShowModal((prev) => !prev)} className="btn flex justify-center items-center gap-2 max-w-28"> <FiPlus className="w-5 h-5" /> Add Task</button>
