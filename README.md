@@ -11,7 +11,7 @@ The Todo List App is a simple task management application built using React. It 
 2. Task can be edited deleted and marked as completed.
 3. Tasks can be sorted by priority and status.
 4. To sort tasks by status the status counter button should be clicked.
-2. Clicking on a task will display more information about it including its description, due date and more...
+5. Clicking on three dot will display more information about it including its description as additional feature, due date and more...
 
 #Features
 
