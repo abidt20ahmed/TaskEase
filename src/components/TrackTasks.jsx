@@ -3,6 +3,23 @@ import { FiPlus } from "react-icons/fi";
 import Task from "./Task";
 import TaskModal from "./TaskModal";
 import { filterByStatus } from "../lib/filterByStatus";
+import FilterByPriority from "./FilterByPriority";
+
+// const FilterByPriority = ({ setTasks }) => {
+//     return (
+//         <select
+//             onChange={(e) => filterByStatus(e.target.value, setTasks, 'priority')}
+//             id="priority"
+//             className="bg-blue-50 border border-slate-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block px-2 h-10"
+//             value={''}
+//         >
+//             <option value="" hidden>Filter by priority</option>
+//             <option value="Low">Low</option>
+//             <option value="Medium">Medium</option>
+//             <option value="High">High</option>
+//         </select>
+//     )
+// }
 
 const TrackTasks = () => {
     const [task, setTask] = useState({
@@ -24,16 +41,21 @@ const TrackTasks = () => {
         <div className="relative pb-10">
             <div className="flex justify-between  bg-blue-100 p-5 rounded-md mb-3">
                 <div className="flex justify-center items-center gap-2 sm:gap-5">
-                    <button onClick={() => filterByStatus('Pending', setTasks)} title="Pending Tasks" className="border-2 border-amber-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
+                    <button onClick={() => filterByStatus('Pending', setTasks, 'status')} title="Pending Tasks" className="border-2 border-amber-500 rounded-xl h-10 w-10  grid place-content-center hover:text-white transition-all">
                         <p className="font-bold text-gray-600">{pending}</p>
                     </button>
-                    <button onClick={() => filterByStatus('Completed', setTasks)} title="Completed Tasks" className="border-2 border-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                    <button onClick={() => filterByStatus('Completed', setTasks, 'status')} title="Completed Tasks" className="border-2 border-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
                         <p className="font-bold text-gray-600">{completed}</p>
                     </button>
-                    <button onClick={() => filterByStatus('', setTasks)} title="All Tasks" className="border-2 border-b-amber-500 border-l-amber-500 border-t-green-500 border-r-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
+                    <button onClick={() => filterByStatus('', setTasks, 'status')} title="All Tasks" className="border-2 border-b-amber-500 border-l-amber-500 border-t-green-500 border-r-green-500 rounded-xl h-10 w-10 grid place-content-center hover:text-white transition-all">
                         <p className="font-bold text-gray-600">{allTasks?.length}</p>
                     </button>
                 </div>
+
+                <div className="absolute sm:static bottom-[102%] right-0">
+                    <FilterByPriority setTasks={setTasks} />
+                </div>
+
                 <button onClick={() => setShowModal((prev) => !prev)} className="btn flex justify-center items-center gap-2 max-w-28"> <FiPlus className="w-5 h-5" /> Add Task</button>
             </div>
             <TaskModal

@@ -12,7 +12,7 @@ const Tasks = () => {
                     <li className="font-semibold list-disc text-green-500" title="Color Indicator">Completed</li>
                 </ul>
             </div>
-            <div className="lg:w-2/5 mx-auto mt-10">
+            <div className="lg:w-6/12 xl:2/5 mx-auto mt-10">
                 <TaskTrack state={'Pending'} tasks={5} />
             </div>
         </div>
