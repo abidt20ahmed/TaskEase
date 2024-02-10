@@ -2,7 +2,7 @@ import TaskTrack from "../components/TrackTasks";
 
 const Tasks = () => {
     return (
-        <div className="px-3 lg:px-0 container mx-auto mt-10">
+        <div className="px-3 container mx-auto mt-10">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-5">
                 <div>
                     <h1 className="font-bold text-3xl text-blue-500">TaskEase</h1>
