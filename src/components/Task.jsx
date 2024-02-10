@@ -38,11 +38,11 @@ const Task = ({ task, setTasks }) => {
         setTasks(updatedTasks);
     };
 
-    const priorityTitle = (task?.status === "Completed" && 'text-slate-500 font-extrabold') || (task?.priority === 'High' ? 'text-red-500' : task?.priority === 'Medium' ? 'text-yellow-500' : task?.priority === 'Low' ? 'text-green-500' : '')
-    const priorityCard = (task?.status === "Completed" && 'null') || task?.priority === 'High' && 'bg-red-50 border-red-500';
+    const priorityTitle = (task?.status === "Completed" && 'text-slate-500 font-extrabold') || (task?.priority === 'High' ? 'text-red-500' : task?.priority === 'Medium' ? 'text-amber-500' : task?.priority === 'Low' ? 'text-green-500' : '')
+    const priorityCard = (task?.status === "Completed" && 'bg-slate-200') || task?.priority === 'High' && 'bg-red-50 border-red-500' || 'bg-slate-200';
 
     return (
-        <div className={`border bg-slate-200 rounded-md p-5 w-full ${priorityCard}`}>
+        <div className={`border  rounded-md p-5 w-full overflow-hidden ${priorityCard}`}>
             <div className="flex justify-between items-center">
                 <h1
                     className={`text-lg font-bold mb-3 flex items-center gap-2 ${priorityTitle}`}
@@ -56,7 +56,7 @@ const Task = ({ task, setTasks }) => {
                 </h1>
 
             </div>
-            <p className="mb-3">{task?.description}</p>
+            <p className="mb-3 text-wrap">{task?.description}</p>
             <div className="flex justify-between mt-3">
                 <p>{task?.date}</p>
                 <div className="flex gap-3">
