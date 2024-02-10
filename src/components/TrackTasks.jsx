@@ -36,7 +36,7 @@ const TrackTasks = () => {
                     </button>
                 </div>
 
-                <div className="absolute sm:static bottom-[102%] right-0">
+                <div className="absolute sm:static bottom-[101%] right-0">
                     <FilterByPriority setTasks={setTasks} />
                 </div>
 
